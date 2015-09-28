@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.xst" -ofn "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.syr" 

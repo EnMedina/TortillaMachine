@@ -1,0 +1,7 @@
+vhdl work "partC.vhd"
+vhdl work "partB.vhd"
+vhdl work "partA.vhd"
+vhdl work "CounterMin.vhd"
+vhdl work "Counter.vhd"
+vhdl work "Compare.vhd"
+vhdl work "main.vhd"

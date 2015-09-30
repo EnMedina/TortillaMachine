@@ -1,0 +1,82 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Tue Sep 29 10:18:14 2015
+# Process ID: 7016
+# Log file: C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/planAhead_run_2/planAhead.log
+# Journal file: C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/planAhead_run_2/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/pa.fromNetlist.tcl
+startgroup
+set_property package_pin R17 [get_ports swQuema]
+endgroup
+startgroup
+set_property package_pin N17 [get_ports swCrud]
+endgroup
+startgroup
+set_property package_pin F4 [get_ports ldCrud]
+endgroup
+startgroup
+set_property package_pin R4 [get_ports ldQuema]
+endgroup
+startgroup
+set_property package_pin L13 [get_ports swDispVacio]
+endgroup
+startgroup
+set_property package_pin P15 [get_ports ldFaltaMat]
+endgroup
+startgroup
+set_property package_pin L14 [get_ports swDispLleno]
+endgroup
+startgroup
+set_property package_pin J14 [get_ports error]
+endgroup
+startgroup
+set_property package_pin E17 [get_ports ldNoBanda]
+endgroup
+startgroup
+set_property package_pin K14 [get_ports ldNoCort]
+endgroup
+startgroup
+set_property package_pin J15 [get_ports ldSeg]
+endgroup
+startgroup
+set_property package_pin B9 [get_ports Clk]
+endgroup
+save_constraints
+startgroup
+set_property package_pin B8 [get_ports Clk]
+endgroup
+save_constraints
+startgroup
+set_property package_pin J14 [get_ports error]
+endgroup
+startgroup
+set_property package_pin F4 [get_ports ldCrud]
+endgroup
+startgroup
+set_property package_pin K15 [get_ports ldAlarma]
+endgroup
+startgroup
+set_property package_pin K17 [get_ports swReset]
+endgroup
+save_constraints
+startgroup
+set_property package_pin F4 [get_ports ldCrud]
+endgroup
+startgroup
+set_property package_pin K15 [get_ports ldAlarma]
+endgroup
+startgroup
+set_property package_pin R4 [get_ports ldQuema]
+endgroup
+startgroup
+set_property package_pin B8 [get_ports Clk]
+endgroup
+set_property is_loc_fixed false [get_ports [list  Clk]]
+set_property is_loc_fixed true [get_ports [list  Clk]]
+startgroup
+set_property package_pin K15 [get_ports ldAlarma]
+endgroup
+save_constraints -force

@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity CounterMin is
     Port ( Clk : in  STD_LOGIC;
            ctrlVect : in  STD_LOGIC_VECTOR (7 downto 0);
-           minPass :out  STD_LOGIC);
+           minPass :buffer  STD_LOGIC);
 end CounterMin;
 
 architecture Behavioral of CounterMin is

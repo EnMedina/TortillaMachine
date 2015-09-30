@@ -33,28 +33,36 @@ entity partA is
     Port ( Clk : in STD_LOGIC;
 			  swQuem : in  STD_LOGIC;
            swCru : in  STD_LOGIC;
+			  errorQuem:out STD_LOGIC;
+			  errorCru:out STD_LOGIC;
 			  errorA:out STD_LOGIC);
 end partA;
 
 architecture Behavioral of partA is
-signal errorQuem: STD_LOGIC;
-signal errorCru : STD_LOGIC ;	
+signal tmperrorQuem: STD_LOGIC;
+signal tmperrorCru : STD_LOGIC ;	
 begin
 process(swQuem,Clk)
 	begin
-		if(swQuem'event and swQuem='1')then
-			errorQuem<='1';
+		if(Clk'event and Clk='1')then
+			if(swQuem='1')then
+			tmperrorQuem<='1';
 		else
-			errorQuem<='0';
+			tmperrorQuem<='0';
+			end if;
 		end if;
 end process;
 process(swCru,Clk)
 	begin
-		if(swCru'event and swCru='1')then
-			errorCru<='1';
+		if(Clk'event and Clk='1')then
+			if(swCru='1')then
+			tmperrorCru<='1';
 		else
-			errorCru<='0';
+			tmperrorCru<='0';
+			end if;
 		end if;		
 end process;
-errorA<= errorCru OR errorQuem;
+errorA<= tmperrorCru OR tmperrorQuem;
+errorQuem<=tmperrorQuem;
+errorCru<=tmperrorCru;
 end Behavioral;

@@ -32,8 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity main is
  Port ( 		
 				
-				Clk,swQuema,swCrud,swDispVacio,swDispLleno,swReset : in  STD_LOGIC;
-				ldQuema,ldCrud,ldFaltaMat,ldNoCort,ldNoBanda,ldAlarma,ldSeg : out  STD_LOGIC);
+				Clk,swQuema,swCrud,swDispVacio,swDispLleno,swAlarm : in  STD_LOGIC;
+				ldQuema,ldCrud,ldFaltaMat,ldNoCort,ldNoBanda,ldAlarma,ldSeg,error : out  STD_LOGIC);
 end main;
 
 architecture Behavioral of main is
@@ -59,21 +59,28 @@ component partA is
     Port ( Clk : in STD_LOGIC;
 			  swQuem : in  STD_LOGIC;
            swCru : in  STD_LOGIC;
+			  errorQuem:out STD_LOGIC;
+			  errorCru:out STD_LOGIC;
 			  errorA:out STD_LOGIC);
 end component;
 component partB is
     Port ( CLK : in  STD_LOGIC;
-           swDisp : in  STD_LOGIC;
+           swDispVacio : in  STD_LOGIC;
            errorB : out  STD_LOGIC);
 end component;
 component partC is
     Port ( CLK : in  STD_LOGIC;
-           swDispVacio : in  STD_LOGIC;
-           errorB : out  STD_LOGIC);
+           swDispLleno : in  STD_LOGIC;
+           errorC : out  STD_LOGIC);
+end component;
+component partD is
+    Port ( CLK : in  STD_LOGIC;
+			  swLLeno:in STD_LOGIC;	
+			  ctrlVect:in STD_LOGIC_VECTOR(7 downto 0);
+           alarmaOn : out  STD_LOGIC);
 end component;
 
 
-signal salidaCompare: 	STD_LOGIC;
 signal salidaCounter : 	STD_LOGIC_VECTOR (25 downto 0); 
 signal rstConteoSec: 	STD_LOGIC;
 signal controlSec: 		STD_LOGIC;
@@ -83,33 +90,31 @@ signal alarmOn: 			STD_LOGIC;
 signal errorA: 			STD_LOGIC;
 signal errorB: 			STD_LOGIC;
 signal errorC:				STD_LOGIC;
+signal errorCru:			STD_LOGIC;
+signal errorQuem	:		STD_LOGIC;
 constant limiteSec: 		STD_LOGIC_VECTOR(25 downto 0) :="10111110101111000010000000";
 constant custTimeLimit: STD_LOGIC_VECTOR(7  downto 0) :="00000101" ;--Put the custom time limit in secons, in binary here.
 constant limitAlarm:		STD_LOGIC_VECTOR(7  downto 0) :="01111000";
+
 begin
 c1:CounterSec 	port map(rstConteoSec,Clk,salidaCounter);
 c2:Compare 		port map (limiteSec,salidaCounter,Clk,rstConteoSec);
 c3:CounterMin 	port map(rstConteoSec,custTimeLimit,rstConteoCic);
-c4:partA 		port map(rstConteoCic,swQuema,swCrud,errorA);
-c5:partB 		port map(rstConteoCic,swDispVacio,errorB);
+c4:partA 		port map(rstConteoSec,swQuema,swCrud,errorQuem,errorCru,errorA);
+c5:partB 		port map(rstConteoSec,swDispVacio,errorB);
 c6:partC			port map(rstConteoCic,swDispLLeno,errorC);
-
-process(rstConteoSec,alarmOn)
+c7:partD			port map(rstConteoSec,swDispLleno,limitAlarm,alarmOn);
+process(rstConteoSec)
 	begin
-	if(rstConteoSec'event and rstConteoSec='1' )then
-		if(alarmOn='1') then
-			controlSec<=not controlSec;
-		else
-			controlSec<='0';
-		end if;	
+	if(rstConteoSec'event and rstConteoSec='1')then
+		controlSec<=not controlSec;
 	end if;
 end process;
-process(rstConteoCic)
-	begin
-	if(rstConteoCic'event and rstConteoCic='1')then
-		controlCic<=not controlCic;
-	end if;
-end process;
-ldAlarma<=controlSec;
-ldSeg<=controlCic;		
+ldAlarma<=alarmOn;
+ldSeg<=rstConteoSec;
+error<= errorA OR errorB OR errorC;
+ldFaltaMat<=errorB;
+ldCrud<=errorCru;
+ldQuema<=errorQuem;
+ldNoCort<=errorC;		
 end Behavioral;

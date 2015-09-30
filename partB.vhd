@@ -40,10 +40,12 @@ architecture Behavioral of partB is
 begin
 process(CLK,swDispVacio)
 	begin
-		if(swDispVacio'event and swDispVacio='1')then
+		if(CLK'event and CLK='1')then
+			if(swDispVacio='1')then
 			errorB<='1';
 		else
 			errorB<='0';
+			end if;
 		end if;
 end process;
 end Behavioral;

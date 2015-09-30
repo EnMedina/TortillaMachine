@@ -1,3 +1,4 @@
+vhdl work "partD.vhd"
 vhdl work "partC.vhd"
 vhdl work "partB.vhd"
 vhdl work "partA.vhd"

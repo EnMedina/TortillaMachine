@@ -1,58 +1,58 @@
 V3 31
 FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/Compare.vhd 2015/09/25.11:56:05 P.20131013
-EN work/Compare 1443578936 \
+EN work/Compare 1443641701 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/Compare.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/Compare/Behavioral 1443578937 \
+AR work/Compare/Behavioral 1443641702 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/Compare.vhd \
-      EN work/Compare 1443578936
+      EN work/Compare 1443641701
 FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/Counter.vhd 2015/09/25.12:17:30 P.20131013
-EN work/CounterSec 1443578934 \
+EN work/CounterSec 1443641699 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/Counter.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/CounterSec/Behavioral 1443578935 \
+AR work/CounterSec/Behavioral 1443641700 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/Counter.vhd \
-      EN work/CounterSec 1443578934
+      EN work/CounterSec 1443641699
 FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/CounterMin.vhd 2015/09/29.10:57:49 P.20131013
-EN work/CounterMin 1443578938 \
+EN work/CounterMin 1443641703 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/CounterMin.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/CounterMin/Behavioral 1443578939 \
+AR work/CounterMin/Behavioral 1443641704 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/CounterMin.vhd \
-      EN work/CounterMin 1443578938
-FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd 2015/09/29.21:08:45 P.20131013
-EN work/main 1443578948 \
+      EN work/CounterMin 1443641703
+FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd 2015/09/30.14:34:54 P.20131013
+EN work/main 1443641713 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/main/Behavioral 1443578949 \
+AR work/main/Behavioral 1443641714 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd \
-      EN work/main 1443578948 CP CounterSec CP Compare CP CounterMin CP partA \
-      CP partB CP partC CP partD
+      EN work/main 1443641713 CP CounterSec CP Compare CP CounterMin CP partA \
+      CP partB CP partC CP CounterCond
 FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partA.vhd 2015/09/29.10:41:07 P.20131013
-EN work/partA 1443578940 \
+EN work/partA 1443641705 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partA.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/partA/Behavioral 1443578941 \
+AR work/partA/Behavioral 1443641706 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partA.vhd \
-      EN work/partA 1443578940
+      EN work/partA 1443641705
 FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partB.vhd 2015/09/29.10:14:27 P.20131013
-EN work/partB 1443578942 \
+EN work/partB 1443641707 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partB.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/partB/Behavioral 1443578943 \
+AR work/partB/Behavioral 1443641708 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partB.vhd \
-      EN work/partB 1443578942
+      EN work/partB 1443641707
 FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partC.vhd 2015/09/28.16:09:32 P.20131013
-EN work/partC 1443578944 \
+EN work/partC 1443641709 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partC.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/partC/Behavioral 1443578945 \
+AR work/partC/Behavioral 1443641710 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partC.vhd \
-      EN work/partC 1443578944
-FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd 2015/09/29.12:12:24 P.20131013
-EN work/partD 1443578946 \
+      EN work/partC 1443641709
+FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd 2015/09/30.14:32:15 P.20131013
+EN work/CounterCond 1443641711 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/partD/Behavioral 1443578947 \
+AR work/CounterCond/Behavioral 1443641712 \
       FL C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd \
-      EN work/partD 1443578946
+      EN work/CounterCond 1443641711

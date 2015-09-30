@@ -30,33 +30,32 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity partD is
-    Port ( CLK : in  STD_LOGIC;
-			  swLLeno:in STD_LOGIC;	
-			  ctrlVect:in STD_LOGIC_VECTOR(7 downto 0);
-           alarmaOn : out  STD_LOGIC);
-end partD;
+entity CounterCond is
+    Port ( Clk : in  STD_LOGIC;
+			  Cond:in STD_LOGIC;
+           ctrlVect : in  STD_LOGIC_VECTOR (7 downto 0);
+           minPass :buffer  STD_LOGIC);
+end CounterCond;
 
-architecture Behavioral of partD is
+architecture Behavioral of CounterCond is
 signal temp: STD_LOGIC_VECTOR(7 downto 0);
 begin
-process(Clk,swLLeno)
+process(Clk,Cond)
 	begin
-	if(swLleno='1')then
+	if(Cond='1')then
 	if(Clk'event and Clk='1')then
 		if(ctrlVect=temp)then
-			alarmaOn<='1';
+			minPass<='1';
 			temp<=(others=>'0');
 		else 
-			alarmaOn<='0';
 			temp<=temp+1;
 		end if;
 	end if;
-	else
-		temp<=(others=>'0');
-		alarmaOn<='0';
-	end if;	
+	end if;
+	if(Cond='0')then
+				minPass<='0';
+				temp<=(others=>'0');
+	end if;			
 	end process;
-
 end Behavioral;
 

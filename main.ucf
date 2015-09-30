@@ -1,15 +1,17 @@
 
-# PlanAhead Generated physical constraints 
 
 NET "swQuema" LOC = R17;
 NET "swCrud" LOC = N17;
 NET "swDispVacio" LOC = L13;
 NET "ldFaltaMat" LOC = P16;
 NET "swDispLleno" LOC = L14;
-NET "ldNoCort" LOC = K14;
-NET "ldSeg" LOC = J15;
-NET "error" LOC = J14;
+NET "ldNoCort" LOC = E16;
+NET "ldSeg" LOC = J14;
 NET "ldCrud" LOC = E4;
 NET "ldQuema" LOC = P4;
 NET "Clk" LOC = B8;
 NET "ldAlarma" LOC = K15;
+
+# PlanAhead Generated physical constraints 
+
+NET "error" LOC = J15;

@@ -32,8 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity main is
  Port ( 		
 				
-				Clk,swQuema,swCrud,swDispVacio,swDispLleno,swAlarm : in  STD_LOGIC;
-				ldQuema,ldCrud,ldFaltaMat,ldNoCort,ldNoBanda,ldAlarma,ldSeg,error : out  STD_LOGIC);
+				Clk,swQuema,swCrud,swDispVacio,swDispLleno : in  STD_LOGIC;
+				ldQuema,ldCrud,ldFaltaMat,ldNoCort,ldAlarma,ldSeg,error : out  STD_LOGIC);
 end main;
 
 architecture Behavioral of main is
@@ -73,20 +73,19 @@ component partC is
            swDispLleno : in  STD_LOGIC;
            errorC : out  STD_LOGIC);
 end component;
-component partD is
-    Port ( CLK : in  STD_LOGIC;
-			  swLLeno:in STD_LOGIC;	
-			  ctrlVect:in STD_LOGIC_VECTOR(7 downto 0);
-           alarmaOn : out  STD_LOGIC);
-end component;
+component CounterCond is
+    Port ( Clk : in  STD_LOGIC;
+			  Cond:in STD_LOGIC;
+           ctrlVect : in  STD_LOGIC_VECTOR (7 downto 0);
+           minPass :buffer  STD_LOGIC);
+end component ;
 
 
 signal salidaCounter : 	STD_LOGIC_VECTOR (25 downto 0); 
 signal rstConteoSec: 	STD_LOGIC;
 signal controlSec: 		STD_LOGIC;
 signal rstConteoCic: 	STD_LOGIC;
-signal controlCic: 		STD_LOGIC;
-signal alarmOn: 			STD_LOGIC;
+signal ctrlAlarma:		STD_LOGIC;
 signal errorA: 			STD_LOGIC;
 signal errorB: 			STD_LOGIC;
 signal errorC:				STD_LOGIC;
@@ -103,15 +102,16 @@ c3:CounterMin 	port map(rstConteoSec,custTimeLimit,rstConteoCic);
 c4:partA 		port map(rstConteoSec,swQuema,swCrud,errorQuem,errorCru,errorA);
 c5:partB 		port map(rstConteoSec,swDispVacio,errorB);
 c6:partC			port map(rstConteoCic,swDispLLeno,errorC);
-c7:partD			port map(rstConteoSec,swDispLleno,limitAlarm,alarmOn);
+c7:CounterCond 	port map(rstConteoSec,swDispLleno,limitAlarm,ctrlAlarma);
+
 process(rstConteoSec)
 	begin
 	if(rstConteoSec'event and rstConteoSec='1')then
 		controlSec<=not controlSec;
 	end if;
 end process;
-ldAlarma<=alarmOn;
-ldSeg<=rstConteoSec;
+ldAlarma<=ctrlAlarma;
+ldSeg<=controlSec;
 error<= errorA OR errorB OR errorC;
 ldFaltaMat<=errorB;
 ldCrud<=errorCru;

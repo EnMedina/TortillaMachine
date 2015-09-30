@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2015-09-29T11:27:13</DateModified>
+  <DateModified>2015-09-30T14:21:57</DateModified>
   <ModuleName>main</ModuleName>
-  <SummaryTimeStamp>2015-09-29T10:58:50</SummaryTimeStamp>
+  <SummaryTimeStamp>2015-09-30T14:16:56</SummaryTimeStamp>
   <SavedFilePath>C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/iseconfig/main.xreport</SavedFilePath>
   <ImplementationReportsDirectory>C:/SPB_Data/version-control/XilinxProjects/TortillaMachine\</ImplementationReportsDirectory>
   <DateInitialized>2015-09-28T07:12:11</DateInitialized>

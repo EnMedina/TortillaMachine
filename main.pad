@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Wed Sep 30 14:35:42 2015
+Thu Oct 01 10:43:02 2015
 
 
 # NOTE: This file is designed to be imported into a spreadsheet program
@@ -54,7 +54,7 @@ B14||DIFFM|IO_L04P_0|UNUSED||0|||||||||
 B15||DIFFMI|IP_L02P_0|UNUSED||0|||||||||
 B16||DIFFM|IO_L01P_0|UNUSED||0|||||||||
 B17|||GND||||||||||||
-B18||IBUF|IP|UNUSED||1|||||||||
+B18|btnAlarma|IBUF|IP|INPUT|LVCMOS25*|1||||NONE||LOCATED|NO|NONE|
 C1||DIFFM|IO_L01P_3|UNUSED||3|||||||||
 C2||DIFFS|IO_L01N_3|UNUSED||3|||||||||
 C3||DIFFM|IO_L25P_0|UNUSED||0|||||||||
@@ -247,7 +247,7 @@ N13|||VCCINT||||||||1.2||||
 N14||DIFFS|IO_L04N_1|UNUSED||1|||||||||
 N15||DIFFM|IO_L04P_1|UNUSED||1|||||||||
 N16|||VCCO_1|||1|||||2.50||||
-N17|swCrud|IBUF|IP|INPUT|LVCMOS25*|1||||NONE||LOCATED|NO|NONE|
+N17|swGrill|IBUF|IP|INPUT|LVCMOS25*|1||||NONE||LOCATED|NO|NONE|
 N18||DIFFM|IO_L08P_1|UNUSED||1|||||||||
 P1||DIFFS|IO_L21N_3|UNUSED||3|||||||||
 P2||DIFFM|IO_L21P_3|UNUSED||3|||||||||
@@ -283,7 +283,7 @@ R13||DIFFS|IO_L22N_2/A22|UNUSED||2|||||||||
 R14||DIFFS|IO_L24N_2/A20|UNUSED||2|||||||||
 R15||DIFFM|IO_L03P_1|UNUSED||1|||||||||
 R16||DIFFS|IO_L03N_1/VREF_1|UNUSED||1|||||||||
-R17|swQuema|IBUF|IP|INPUT|LVCMOS25*|1||||NONE||LOCATED|NO|NONE|
+R17||IBUF|IP|UNUSED||1|||||||||
 R18||DIFFM|IO_L02P_1/A14|UNUSED||1|||||||||
 T1||DIFFS|IO_L24N_3|UNUSED||3|||||||||
 T2||DIFFM|IO_L24P_3|UNUSED||3|||||||||

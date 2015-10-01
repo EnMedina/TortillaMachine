@@ -1,7 +1,6 @@
 
 
-NET "swQuema" LOC = R17;
-NET "swCrud" LOC = N17;
+NET "swGrill" LOC = N17;
 NET "swDispVacio" LOC = L13;
 NET "ldFaltaMat" LOC = P16;
 NET "swDispLleno" LOC = L14;
@@ -11,6 +10,7 @@ NET "ldCrud" LOC = E4;
 NET "ldQuema" LOC = P4;
 NET "Clk" LOC = B8;
 NET "ldAlarma" LOC = K15;
+NET "btnAlarma" LOC = B18;
 
 # PlanAhead Generated physical constraints 
 

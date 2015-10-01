@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.91 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.91 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.19 secs
  
 --> Reading design: main.prj
 
@@ -117,10 +117,10 @@ Architecture behavioral of Entity partb is up to date.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partC.vhd" in Library work.
 Architecture behavioral of Entity partc is up to date.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd" in Library work.
-Architecture behavioral of Entity countercond is up to date.
+Entity <countercond> compiled.
+Entity <countercond> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd" in Library work.
-Entity <main> compiled.
-Entity <main> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity main is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -147,7 +147,7 @@ Analyzing hierarchy for entity <CounterCond> in library <work> (architecture <be
 =========================================================================
 Analyzing Entity <main> in library <work> (Architecture <behavioral>).
 INFO:Xst:1739 - HDL ADVISOR - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd" line 36: declaration of a buffer port will make it difficult for you to validate this design by simulation. It is preferable to declare it as output.
-INFO:Xst:1739 - HDL ADVISOR - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd" line 37: declaration of a buffer port will make it difficult for you to validate this design by simulation. It is preferable to declare it as output.
+INFO:Xst:1739 - HDL ADVISOR - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd" line 38: declaration of a buffer port will make it difficult for you to validate this design by simulation. It is preferable to declare it as output.
 Entity <main> analyzed. Unit <main> generated.
 
 Analyzing Entity <CounterSec> in library <work> (Architecture <behavioral>).
@@ -169,6 +169,8 @@ Analyzing Entity <partC> in library <work> (Architecture <behavioral>).
 Entity <partC> analyzed. Unit <partC> generated.
 
 Analyzing Entity <CounterCond> in library <work> (Architecture <behavioral>).
+WARNING:Xst:819 - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd" line 45: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <btnAlarma>
 Entity <CounterCond> analyzed. Unit <CounterCond> generated.
 
 
@@ -206,10 +208,19 @@ Unit <CounterMin> synthesized.
 
 Synthesizing Unit <partA>.
     Related source file is "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partA.vhd".
-    Found 1-bit register for signal <tmperrorCru>.
-    Found 1-bit register for signal <tmperrorQuem>.
+INFO:Xst:1608 - Relative priorities of control signals on register <eQu> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+WARNING:Xst:737 - Found 1-bit latch for signal <eCr>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <eQu>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 8-bit comparator greater for signal <eCr$cmp_gt0000> created at line 63.
+    Found 8-bit comparator less for signal <eCr$cmp_lt0000> created at line 59.
+    Found 8-bit comparator less for signal <eCr$cmp_lt0001> created at line 63.
+    Found 8-bit comparator greater for signal <eQu$cmp_gt0000> created at line 67.
+    Found 8-bit updown counter for signal <temp>.
+    Found 8-bit comparator greater for signal <temp$cmp_gt0000> created at line 52.
+    Found 8-bit comparator less for signal <temp$cmp_lt0000> created at line 49.
     Summary:
-	inferred   2 D-type flip-flop(s).
+	inferred   1 Counter(s).
+	inferred   6 Comparator(s).
 Unit <partA> synthesized.
 
 
@@ -231,8 +242,8 @@ Unit <partC> synthesized.
 
 Synthesizing Unit <CounterCond>.
     Related source file is "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd".
-    Found 1-bit register for signal <minPass>.
-    Found 8-bit up counter for signal <temp>.
+    Found 8-bit up counter for signal <a>.
+    Found 1-bit register for signal <tmpAlarm>.
     Summary:
 	inferred   1 Counter(s).
 	inferred   1 D-type flip-flop(s).
@@ -251,11 +262,17 @@ Unit <main> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Counters                                             : 3
+# Counters                                             : 4
  26-bit up counter                                     : 1
  8-bit up counter                                      : 2
-# Registers                                            : 8
- 1-bit register                                        : 8
+ 8-bit updown counter                                  : 1
+# Registers                                            : 6
+ 1-bit register                                        : 6
+# Latches                                              : 2
+ 1-bit latch                                           : 2
+# Comparators                                          : 6
+ 8-bit comparator greater                              : 3
+ 8-bit comparator less                                 : 3
 
 =========================================================================
 
@@ -268,11 +285,17 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Counters                                             : 3
+# Counters                                             : 4
  26-bit up counter                                     : 1
  8-bit up counter                                      : 2
-# Registers                                            : 8
- Flip-Flops                                            : 8
+ 8-bit updown counter                                  : 1
+# Registers                                            : 6
+ Flip-Flops                                            : 6
+# Latches                                              : 2
+ 1-bit latch                                           : 2
+# Comparators                                          : 6
+ 8-bit comparator greater                              : 3
+ 8-bit comparator less                                 : 3
 
 =========================================================================
 
@@ -282,13 +305,15 @@ Macro Statistics
 
 Optimizing unit <main> ...
 
+Optimizing unit <partA> ...
+
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block main, actual ratio is 0.
 FlipFlop c5/errorB has been replicated 1 time(s) to handle iob=true attribute.
-FlipFlop c4/tmperrorCru has been replicated 1 time(s) to handle iob=true attribute.
+Latch c4/eCr has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop c6/errorC has been replicated 1 time(s) to handle iob=true attribute.
-FlipFlop c4/tmperrorQuem has been replicated 1 time(s) to handle iob=true attribute.
+Latch c4/eQu has been replicated 1 time(s) to handle iob=true attribute.
 
 Final Macro Processing ...
 
@@ -296,8 +321,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 54
- Flip-Flops                                            : 54
+# Registers                                            : 58
+ Flip-Flops                                            : 58
 
 =========================================================================
 
@@ -326,21 +351,25 @@ Design Statistics
 # IOs                              : 12
 
 Cell Usage :
-# BELS                             : 159
+# BELS                             : 199
 #      GND                         : 1
-#      INV                         : 7
+#      INV                         : 5
 #      LUT1                        : 39
-#      LUT2                        : 4
-#      LUT3                        : 8
-#      LUT4                        : 7
-#      LUT4_D                      : 4
-#      MUXCY                       : 46
+#      LUT2                        : 15
+#      LUT2_L                      : 1
+#      LUT3                        : 9
+#      LUT4                        : 19
+#      LUT4_D                      : 5
+#      MUXCY                       : 53
+#      MUXF5                       : 1
 #      VCC                         : 1
-#      XORCY                       : 42
-# FlipFlops/Latches                : 54
-#      FDC                         : 8
-#      FDCE                        : 1
-#      FDR                         : 45
+#      XORCY                       : 50
+# FlipFlops/Latches                : 62
+#      FDCE                        : 9
+#      FDE                         : 8
+#      FDR                         : 41
+#      LDC                         : 2
+#      LDCP                        : 2
 # Clock Buffers                    : 2
 #      BUFG                        : 1
 #      BUFGP                       : 1
@@ -354,9 +383,9 @@ Device utilization summary:
 
 Selected Device : 3s1200efg320-4 
 
- Number of Slices:                       41  out of   8672     0%  
- Number of Slice Flip Flops:             50  out of  17344     0%  
- Number of 4 input LUTs:                 69  out of  17344     0%  
+ Number of Slices:                       54  out of   8672     0%  
+ Number of Slice Flip Flops:             58  out of  17344     0%  
+ Number of 4 input LUTs:                 93  out of  17344     0%  
  Number of IOs:                          12
  Number of bonded IOBs:                  12  out of    250     4%  
     IOB Flip Flops:                       4
@@ -380,29 +409,36 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)  | Load  |
------------------------------------+------------------------+-------+
-c2/Change1                         | BUFG                   | 25    |
-Clk                                | BUFGP                  | 27    |
-c3/minPass                         | NONE(c6/errorC)        | 2     |
------------------------------------+------------------------+-------+
+------------------------------------------+------------------------+-------+
+Clock Signal                              | Clock buffer(FF name)  | Load  |
+------------------------------------------+------------------------+-------+
+c2/Change1                                | BUFG                   | 29    |
+Clk                                       | BUFGP                  | 27    |
+c3/minPass                                | NONE(c6/errorC)        | 2     |
+c4/eCr_cmp_lt0000(c4/eCr_cmp_lt00001_f5:O)| NONE(*)(c4/eCr)        | 4     |
+------------------------------------------+------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
------------------------------------------------+------------------------+-------+
-Control Signal                                 | Buffer(FF name)        | Load  |
------------------------------------------------+------------------------+-------+
-c6/swDispLleno_inv(c6/swDispLleno_inv1_INV_0:O)| NONE(c7/minPass)       | 9     |
------------------------------------------------+------------------------+-------+
+-------------------------------------------+------------------------+-------+
+Control Signal                             | Buffer(FF name)        | Load  |
+-------------------------------------------+------------------------+-------+
+c7/tmpAlarm_and0000(c7/tmpAlarm_and00001:O)| NONE(c7/a_0)           | 9     |
+c4/eCr_or0000(c4/eCr_or00001:O)            | NONE(c4/eCr)           | 2     |
+c4/eQu_and0000(c4/eQu_and00002:O)          | NONE(c4/eQu)           | 2     |
+c4/eQu_cmp_gt0000(c4/eQu_cmp_gt00001:O)    | NONE(c4/eQu)           | 2     |
+-------------------------------------------+------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 4.947ns (Maximum Frequency: 202.143MHz)
-   Minimum input arrival time before clock: 4.186ns
+   Minimum period: 6.886ns (Maximum Frequency: 145.222MHz)
+   Minimum input arrival time before clock: 6.105ns
    Maximum output required time after clock: 5.582ns
    Maximum combinational path delay: No path found
 
@@ -412,33 +448,35 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'c2/Change1'
-  Clock period: 4.947ns (frequency: 202.143MHz)
-  Total number of paths / destination ports: 217 / 27
+  Clock period: 6.886ns (frequency: 145.222MHz)
+  Total number of paths / destination ports: 719 / 43
 -------------------------------------------------------------------------
-Delay:               4.947ns (Levels of Logic = 9)
-  Source:            c7/temp_1 (FF)
-  Destination:       c7/temp_7 (FF)
+Delay:               6.886ns (Levels of Logic = 11)
+  Source:            c4/temp_4 (FF)
+  Destination:       c4/temp_7 (FF)
   Source Clock:      c2/Change1 rising
   Destination Clock: c2/Change1 rising
 
-  Data Path: c7/temp_1 to c7/temp_7
+  Data Path: c4/temp_4 to c4/temp_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              2   0.591   0.622  c7/temp_1 (c7/temp_1)
-     LUT1:I0->O            1   0.704   0.000  c7/Mcount_temp_cy<1>_rt (c7/Mcount_temp_cy<1>_rt)
-     MUXCY:S->O            1   0.464   0.000  c7/Mcount_temp_cy<1> (c7/Mcount_temp_cy<1>)
-     MUXCY:CI->O           1   0.059   0.000  c7/Mcount_temp_cy<2> (c7/Mcount_temp_cy<2>)
-     MUXCY:CI->O           1   0.059   0.000  c7/Mcount_temp_cy<3> (c7/Mcount_temp_cy<3>)
-     MUXCY:CI->O           1   0.059   0.000  c7/Mcount_temp_cy<4> (c7/Mcount_temp_cy<4>)
-     MUXCY:CI->O           1   0.059   0.000  c7/Mcount_temp_cy<5> (c7/Mcount_temp_cy<5>)
-     MUXCY:CI->O           0   0.059   0.000  c7/Mcount_temp_cy<6> (c7/Mcount_temp_cy<6>)
-     XORCY:CI->O           1   0.804   0.455  c7/Mcount_temp_xor<7> (Result<7>)
-     LUT3:I2->O            1   0.704   0.000  c7/Mcount_temp_eqn_71 (c7/Mcount_temp_eqn_7)
-     FDC:D                     0.308          c7/temp_7
+     FDE:C->Q              2   0.591   0.622  c4/temp_4 (c4/temp_4)
+     LUT4:I0->O           12   0.704   0.965  c4/eQu_cmp_gt00001 (c4/eQu_cmp_gt0000)
+     LUT4:I3->O            4   0.704   0.666  c4/temp_not0003_inv (c4/temp_not0003_inv)
+     LUT2:I1->O            1   0.704   0.000  c4/Mcount_temp_lut<0> (c4/Mcount_temp_lut<0>)
+     MUXCY:S->O            1   0.464   0.000  c4/Mcount_temp_cy<0> (c4/Mcount_temp_cy<0>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<1> (c4/Mcount_temp_cy<1>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<2> (c4/Mcount_temp_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<3> (c4/Mcount_temp_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<4> (c4/Mcount_temp_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<5> (c4/Mcount_temp_cy<5>)
+     MUXCY:CI->O           0   0.059   0.000  c4/Mcount_temp_cy<6> (c4/Mcount_temp_cy<6>)
+     XORCY:CI->O           1   0.804   0.000  c4/Mcount_temp_xor<7> (c4/Result<7>)
+     FDE:D                     0.308          c4/temp_7
     ----------------------------------------
-    Total                      4.947ns (3.870ns logic, 1.077ns route)
-                                       (78.2% logic, 21.8% route)
+    Total                      6.886ns (4.633ns logic, 2.253ns route)
+                                       (67.3% logic, 32.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'Clk'
@@ -489,29 +527,38 @@ Delay:               4.850ns (Levels of Logic = 26)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'c2/Change1'
-  Total number of paths / destination ports: 6 / 6
+  Total number of paths / destination ports: 72 / 27
 -------------------------------------------------------------------------
-Offset:              3.700ns (Levels of Logic = 2)
-  Source:            swCrud (PAD)
-  Destination:       c4/tmperrorCru (FF)
+Offset:              6.105ns (Levels of Logic = 11)
+  Source:            swGrill (PAD)
+  Destination:       c4/temp_7 (FF)
   Destination Clock: c2/Change1 rising
 
-  Data Path: swCrud to c4/tmperrorCru
+  Data Path: swGrill to c4/temp_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   1.218   0.420  swCrud_IBUF (swCrud_IBUF)
-     INV:I->O              2   0.704   0.447  c4/swCru_inv1_INV_0 (c4/swCru_inv)
-     FDR:R                     0.911          c4/tmperrorCru
+     IBUF:I->O             7   1.218   0.883  swGrill_IBUF (swGrill_IBUF)
+     LUT4:I0->O            4   0.704   0.666  c4/temp_not0003_inv (c4/temp_not0003_inv)
+     LUT2:I1->O            1   0.704   0.000  c4/Mcount_temp_lut<0> (c4/Mcount_temp_lut<0>)
+     MUXCY:S->O            1   0.464   0.000  c4/Mcount_temp_cy<0> (c4/Mcount_temp_cy<0>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<1> (c4/Mcount_temp_cy<1>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<2> (c4/Mcount_temp_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<3> (c4/Mcount_temp_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<4> (c4/Mcount_temp_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  c4/Mcount_temp_cy<5> (c4/Mcount_temp_cy<5>)
+     MUXCY:CI->O           0   0.059   0.000  c4/Mcount_temp_cy<6> (c4/Mcount_temp_cy<6>)
+     XORCY:CI->O           1   0.804   0.000  c4/Mcount_temp_xor<7> (c4/Result<7>)
+     FDE:D                     0.308          c4/temp_7
     ----------------------------------------
-    Total                      3.700ns (2.833ns logic, 0.867ns route)
-                                       (76.6% logic, 23.4% route)
+    Total                      6.105ns (4.556ns logic, 1.549ns route)
+                                       (74.6% logic, 25.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'c3/minPass'
   Total number of paths / destination ports: 2 / 2
 -------------------------------------------------------------------------
-Offset:              4.186ns (Levels of Logic = 2)
+Offset:              3.867ns (Levels of Logic = 2)
   Source:            swDispLleno (PAD)
   Destination:       c6/errorC (FF)
   Destination Clock: c3/minPass rising
@@ -520,27 +567,27 @@ Offset:              4.186ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   1.218   0.420  swDispLleno_IBUF (swDispLleno_IBUF)
-     INV:I->O             11   0.704   0.933  c6/swDispLleno_inv1_INV_0 (c6/swDispLleno_inv)
+     IBUF:I->O             4   1.218   0.587  swDispLleno_IBUF (swDispLleno_IBUF)
+     INV:I->O              2   0.704   0.447  c6/swDispLleno_inv1_INV_0 (c6/swDispLleno_inv)
      FDR:R                     0.911          c6/errorC
     ----------------------------------------
-    Total                      4.186ns (2.833ns logic, 1.353ns route)
-                                       (67.7% logic, 32.3% route)
+    Total                      3.867ns (2.833ns logic, 1.034ns route)
+                                       (73.3% logic, 26.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'c2/Change1'
-  Total number of paths / destination ports: 8 / 6
+  Total number of paths / destination ports: 4 / 4
 -------------------------------------------------------------------------
 Offset:              5.582ns (Levels of Logic = 2)
-  Source:            c4/tmperrorQuem (FF)
+  Source:            c5/errorB (FF)
   Destination:       error (PAD)
   Source Clock:      c2/Change1 rising
 
-  Data Path: c4/tmperrorQuem to error
+  Data Path: c5/errorB to error
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              1   0.591   0.595  c4/tmperrorQuem (c4/tmperrorQuem)
+     FDR:C->Q              1   0.591   0.595  c5/errorB (c5/errorB)
      LUT4:I0->O            1   0.704   0.420  error1 (error_OBUF)
      OBUF:I->O                 3.272          error_OBUF (error)
     ----------------------------------------
@@ -548,10 +595,30 @@ Offset:              5.582ns (Levels of Logic = 2)
                                        (81.8% logic, 18.2% route)
 
 =========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'c4/eCr_cmp_lt0000'
+  Total number of paths / destination ports: 4 / 3
+-------------------------------------------------------------------------
+Offset:              5.527ns (Levels of Logic = 2)
+  Source:            c4/eCr (LATCH)
+  Destination:       error (PAD)
+  Source Clock:      c4/eCr_cmp_lt0000 falling
+
+  Data Path: c4/eCr to error
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LDC:G->Q              1   0.676   0.455  c4/eCr (c4/eCr)
+     LUT4:I2->O            1   0.704   0.420  error1 (error_OBUF)
+     OBUF:I->O                 3.272          error_OBUF (error)
+    ----------------------------------------
+    Total                      5.527ns (4.652ns logic, 0.875ns route)
+                                       (84.2% logic, 15.8% route)
+
+=========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'c3/minPass'
   Total number of paths / destination ports: 2 / 2
 -------------------------------------------------------------------------
-Offset:              5.442ns (Levels of Logic = 2)
+Offset:              5.486ns (Levels of Logic = 2)
   Source:            c6/errorC (FF)
   Destination:       error (PAD)
   Source Clock:      c3/minPass rising
@@ -560,24 +627,24 @@ Offset:              5.442ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              1   0.591   0.455  c6/errorC (c6/errorC)
-     LUT4:I2->O            1   0.704   0.420  error1 (error_OBUF)
+     FDR:C->Q              1   0.591   0.499  c6/errorC (c6/errorC)
+     LUT4:I1->O            1   0.704   0.420  error1 (error_OBUF)
      OBUF:I->O                 3.272          error_OBUF (error)
     ----------------------------------------
-    Total                      5.442ns (4.567ns logic, 0.875ns route)
-                                       (83.9% logic, 16.1% route)
+    Total                      5.486ns (4.567ns logic, 0.919ns route)
+                                       (83.2% logic, 16.8% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.99 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.73 secs
  
 --> 
 
-Total memory usage is 246712 kilobytes
+Total memory usage is 247928 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
-Number of infos    :    3 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
 

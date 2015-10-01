@@ -1,17 +1,17 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Wed Sep 30 14:35:17 2015
+// Written by: Map P.20131013 on Thu Oct 01 10:42:33 2015
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "btnAlarma" LOCATE = SITE "B18" LEVEL 1;
 COMP "ldCrud" LOCATE = SITE "E4" LEVEL 1;
+COMP "swGrill" LOCATE = SITE "N17" LEVEL 1;
 COMP "ldAlarma" LOCATE = SITE "K15" LEVEL 1;
 COMP "ldSeg" LOCATE = SITE "J14" LEVEL 1;
 COMP "ldQuema" LOCATE = SITE "P4" LEVEL 1;
 COMP "swDispVacio" LOCATE = SITE "L13" LEVEL 1;
-COMP "swCrud" LOCATE = SITE "N17" LEVEL 1;
 COMP "ldFaltaMat" LOCATE = SITE "P16" LEVEL 1;
 COMP "ldNoCort" LOCATE = SITE "E16" LEVEL 1;
-COMP "swQuema" LOCATE = SITE "R17" LEVEL 1;
 COMP "swDispLleno" LOCATE = SITE "L14" LEVEL 1;
 COMP "Clk" LOCATE = SITE "B8" LEVEL 1;
 COMP "error" LOCATE = SITE "J15" LEVEL 1;

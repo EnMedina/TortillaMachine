@@ -9,35 +9,38 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Wed Sep 30 14:35:14 2015
+Mapped Date    : Thu Oct 01 10:42:31 2015
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:    0
+Number of warnings:    1
 Logic Utilization:
-  Number of Slice Flip Flops:            50 out of  17,344    1%
-  Number of 4 input LUTs:                26 out of  17,344    1%
+  Total Number Slice Registers:          58 out of  17,344    1%
+    Number used as Flip Flops:           56
+    Number used as Latches:               2
+  Number of 4 input LUTs:                52 out of  17,344    1%
 Logic Distribution:
-  Number of occupied Slices:             42 out of   8,672    1%
-    Number of Slices containing only related logic:      42 out of      42 100%
-    Number of Slices containing unrelated logic:          0 out of      42   0%
+  Number of occupied Slices:             55 out of   8,672    1%
+    Number of Slices containing only related logic:      55 out of      55 100%
+    Number of Slices containing unrelated logic:          0 out of      55   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:          65 out of  17,344    1%
-    Number used as logic:                26
+  Total Number of 4 input LUTs:          91 out of  17,344    1%
+    Number used as logic:                52
     Number used as a route-thru:         39
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
 
   Number of bonded IOBs:                 12 out of     250    4%
-    IOB Flip Flops:                       4
+    IOB Flip Flops:                       2
+    IOB Latches:                          2
   Number of BUFGMUXs:                     2 out of      24    8%
 
-Average Fanout of Non-Clock Nets:                1.86
+Average Fanout of Non-Clock Nets:                2.30
 
-Peak Memory Usage:  250 MB
-Total REAL time to MAP completion:  3 secs 
+Peak Memory Usage:  251 MB
+Total REAL time to MAP completion:  2 secs 
 Total CPU time to MAP completion:   2 secs 
 
 NOTES:
@@ -79,6 +82,9 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
+WARNING:PhysDesignRules:372 - Gated clock. Clock net c4/eCr_cmp_lt0000 is
+   sourced by a combinatorial pin. This is not good design practice. Use the CE
+   pin to control the loading of data into the flip-flop.
 
 Section 3 - Informational
 -------------------------
@@ -110,6 +116,7 @@ Section 6 - IOB Properties
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Clk                                | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| btnAlarma                          | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
 | error                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | ldAlarma                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | ldCrud                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          | 0 / 0    |
@@ -117,10 +124,9 @@ Section 6 - IOB Properties
 | ldNoCort                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          | 0 / 0    |
 | ldQuema                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          | 0 / 0    |
 | ldSeg                              | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| swCrud                             | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
 | swDispLleno                        | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
 | swDispVacio                        | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
-| swQuema                            | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
+| swGrill                            | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Section 7 - RPMs

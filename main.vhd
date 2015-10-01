@@ -32,7 +32,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity main is
  Port ( 		
 				
-				Clk,swQuema,swCrud,swDispVacio,swDispLleno : in  STD_LOGIC;
+				Clk,swGrill,swDispVacio,swDispLleno,btnAlarma : in  STD_LOGIC;
 				ldQuema,ldCrud,ldFaltaMat,ldNoCort,ldAlarma,ldSeg,error : out  STD_LOGIC);
 end main;
 
@@ -57,8 +57,7 @@ end component;
 
 component partA is
     Port ( Clk : in STD_LOGIC;
-			  swQuem : in  STD_LOGIC;
-           swCru : in  STD_LOGIC;
+           swGrill : in  STD_LOGIC;
 			  errorQuem:out STD_LOGIC;
 			  errorCru:out STD_LOGIC;
 			  errorA:out STD_LOGIC);
@@ -76,6 +75,7 @@ end component;
 component CounterCond is
     Port ( Clk : in  STD_LOGIC;
 			  Cond:in STD_LOGIC;
+			  btnAlarma:in STD_LOGIC;
            ctrlVect : in  STD_LOGIC_VECTOR (7 downto 0);
            minPass :buffer  STD_LOGIC);
 end component ;
@@ -93,16 +93,16 @@ signal errorCru:			STD_LOGIC;
 signal errorQuem	:		STD_LOGIC;
 constant limiteSec: 		STD_LOGIC_VECTOR(25 downto 0) :="10111110101111000010000000";
 constant custTimeLimit: STD_LOGIC_VECTOR(7  downto 0) :="00000101" ;--Put the custom time limit in secons, in binary here.
-constant limitAlarm:		STD_LOGIC_VECTOR(7  downto 0) :="01111000";
+constant limitAlarm:		STD_LOGIC_VECTOR(7  downto 0) :="00001000";
 
 begin
 c1:CounterSec 	port map(rstConteoSec,Clk,salidaCounter);
 c2:Compare 		port map (limiteSec,salidaCounter,Clk,rstConteoSec);
 c3:CounterMin 	port map(rstConteoSec,custTimeLimit,rstConteoCic);
-c4:partA 		port map(rstConteoSec,swQuema,swCrud,errorQuem,errorCru,errorA);
+c4:partA 		port map(rstConteoSec,swGrill,errorQuem,errorCru,errorA);
 c5:partB 		port map(rstConteoSec,swDispVacio,errorB);
 c6:partC			port map(rstConteoCic,swDispLLeno,errorC);
-c7:CounterCond 	port map(rstConteoSec,swDispLleno,limitAlarm,ctrlAlarma);
+c7:CounterCond 	port map(rstConteoSec,swDispLleno,btnAlarma,limitAlarm,ctrlAlarma);
 
 process(rstConteoSec)
 	begin

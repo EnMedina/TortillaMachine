@@ -1,5 +1,0 @@
-set -tmpdir "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/xst/projnav.tmp"
-set -xsthdpdir "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/xst"
-elaborate
--ifn partB.prj
--ifmt mixed

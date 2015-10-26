@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.19 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.88 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.19 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.88 secs
  
 --> Reading design: main.prj
 
@@ -105,22 +105,29 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/Counter.vhd" in Library work.
-Architecture behavioral of Entity countersec is up to date.
+Entity <countersec> compiled.
+Entity <countersec> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/Compare.vhd" in Library work.
-Architecture behavioral of Entity compare is up to date.
+Entity <compare> compiled.
+Entity <compare> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/CounterMin.vhd" in Library work.
-Architecture behavioral of Entity countermin is up to date.
+Entity <countermin> compiled.
+Entity <countermin> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partA.vhd" in Library work.
-Architecture behavioral of Entity parta is up to date.
+Entity <parta> compiled.
+Entity <parta> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partB.vhd" in Library work.
-Architecture behavioral of Entity partb is up to date.
+Entity <partb> compiled.
+Entity <partb> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partC.vhd" in Library work.
-Architecture behavioral of Entity partc is up to date.
+Entity <partc> compiled.
+Entity <partc> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd" in Library work.
 Entity <countercond> compiled.
 Entity <countercond> (Architecture <behavioral>) compiled.
 Compiling vhdl file "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd" in Library work.
-Architecture behavioral of Entity main is up to date.
+Entity <main> compiled.
+Entity <main> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -146,8 +153,8 @@ Analyzing hierarchy for entity <CounterCond> in library <work> (architecture <be
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <main> in library <work> (Architecture <behavioral>).
-INFO:Xst:1739 - HDL ADVISOR - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd" line 36: declaration of a buffer port will make it difficult for you to validate this design by simulation. It is preferable to declare it as output.
-INFO:Xst:1739 - HDL ADVISOR - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd" line 38: declaration of a buffer port will make it difficult for you to validate this design by simulation. It is preferable to declare it as output.
+INFO:Xst:1739 - HDL ADVISOR - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd" line 10: declaration of a buffer port will make it difficult for you to validate this design by simulation. It is preferable to declare it as output.
+INFO:Xst:1739 - HDL ADVISOR - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/main.vhd" line 12: declaration of a buffer port will make it difficult for you to validate this design by simulation. It is preferable to declare it as output.
 Entity <main> analyzed. Unit <main> generated.
 
 Analyzing Entity <CounterSec> in library <work> (Architecture <behavioral>).
@@ -169,7 +176,7 @@ Analyzing Entity <partC> in library <work> (Architecture <behavioral>).
 Entity <partC> analyzed. Unit <partC> generated.
 
 Analyzing Entity <CounterCond> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd" line 45: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "C:/SPB_Data/version-control/XilinxProjects/TortillaMachine/partD.vhd" line 19: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <btnAlarma>
 Entity <CounterCond> analyzed. Unit <CounterCond> generated.
 
@@ -211,13 +218,13 @@ Synthesizing Unit <partA>.
 INFO:Xst:1608 - Relative priorities of control signals on register <eQu> differ from those commonly found in the selected device family. This will result in additional logic around the register.
 WARNING:Xst:737 - Found 1-bit latch for signal <eCr>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 1-bit latch for signal <eQu>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-    Found 8-bit comparator greater for signal <eCr$cmp_gt0000> created at line 63.
-    Found 8-bit comparator less for signal <eCr$cmp_lt0000> created at line 59.
-    Found 8-bit comparator less for signal <eCr$cmp_lt0001> created at line 63.
-    Found 8-bit comparator greater for signal <eQu$cmp_gt0000> created at line 67.
+    Found 8-bit comparator greater for signal <eCr$cmp_gt0000> created at line 37.
+    Found 8-bit comparator less for signal <eCr$cmp_lt0000> created at line 33.
+    Found 8-bit comparator less for signal <eCr$cmp_lt0001> created at line 37.
+    Found 8-bit comparator greater for signal <eQu$cmp_gt0000> created at line 41.
     Found 8-bit updown counter for signal <temp>.
-    Found 8-bit comparator greater for signal <temp$cmp_gt0000> created at line 52.
-    Found 8-bit comparator less for signal <temp$cmp_lt0000> created at line 49.
+    Found 8-bit comparator greater for signal <temp$cmp_gt0000> created at line 26.
+    Found 8-bit comparator less for signal <temp$cmp_lt0000> created at line 23.
     Summary:
 	inferred   1 Counter(s).
 	inferred   6 Comparator(s).
@@ -637,12 +644,12 @@ Offset:              5.486ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 7.00 secs
-Total CPU time to Xst completion: 6.73 secs
+Total REAL time to Xst completion: 11.00 secs
+Total CPU time to Xst completion: 11.03 secs
  
 --> 
 
-Total memory usage is 247928 kilobytes
+Total memory usage is 248108 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    3 (   0 filtered)
